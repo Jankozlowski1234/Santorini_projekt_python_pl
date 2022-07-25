@@ -1,0 +1,880 @@
+Python Library Documentation: module gra
+
+NAME
+    gra
+
+CLASSES
+    builtins.object
+        Gra
+    
+    class Gra(builtins.object)
+     |  Główna klasa w projekcie, odpowiada za rozpoczęcie gry, oraz dawanie ruchu kolejnym graczom.
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |  
+     |  petla_ruchow(self)
+     |      Metoda symulująca przebieg rozrywki, po kolei rusza graczami, aż do momentu skonczenia gry
+     |      :return: Gracz (ten, który wygrał grę)
+     |  
+     |  podaj_drugiego(self, gracz)
+     |      Meteda, która zwraca gracza innego od tego, którego podajemy jako parametr
+     |      :param gracz: gracz, którego nie chcemy zwrócić
+     |      :return: Gracz
+     |  
+     |  ruch(self, gracz)
+     |      Metoda symulująca ruch jednego z graczy
+     |      :param gracz: Gracz, którego jest teraz ruch
+     |      :return: Void lub Str (jeśli gra się kończy)
+     |  
+     |  rysoj(self, text='')
+     |      Wywołuje na Planszy metodę rysuj.
+     |      :param text: tekst, który będzie wyświetlany na planszy
+     |      :return: Void
+     |  
+     |  rysoj_poczotek(self, text='')
+     |      Specialna metoda używana na początku rozrywki
+     |      :param text: tekst, który będzie wyświetlany na planszy
+     |      :return: Void
+     |  
+     |  rysoj_poczotek2(self, lista, text='')
+     |      Metoda do ryzsowania planszy dla ustawienia drugiego gracza
+     |      :param lista:  lista numerów pól, które są już zajęte
+     |      :param text: tekst, który będzie wyświetlany na planszy
+     |      :return: Void
+     |  
+     |  rysuj_numerki(self, lista, text='')
+     |      Metoda, która rysuje planszę a na niej tylko niektóre pola
+     |      :param lista:  lista numerów pól, które mają być wyświetlone
+     |      :param text: tekst, który będzie wyświetlany na planszyr
+     |      :return: Void
+     |  
+     |  zacznij(self)
+     |      Metoda zaczynająca gre, tworzy ona obu graczy wraz z Pionkami, plansze oraz Pola.
+     |		:return: Void
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FUNCTIONS
+    napisz_dokumentacje()
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\gra.py
+
+Python Library Documentation: module Plansza
+
+NAME
+    Plansza
+
+CLASSES
+    builtins.object
+        Plansza
+    
+    class Plansza(builtins.object)
+     |  Plansza(slownik_pol, slownik_numerkow, gracz1, gracz2)
+     |  
+     |  Klasa, która reprezentuje planszę gry, pamięta wszystkie pola, oraz jest odpowiedzialna za rysowanie planszy
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, slownik_pol, slownik_numerkow, gracz1, gracz2)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  podaj_otoczenie(self, pole)
+     |      Metoda, która dla podanego pola zwróci listę pól, które są w jego sąsiedztwie
+     |      :param pole: pole, którego liste sąsiadów ma zwrócić
+     |      :return: lista pól z otoczenia danego pola
+     |  
+     |  przygotoj_do_rysowania(self, text='')
+     |      Metoda rysujaca całą planszę, oraz legendę, ale nie wyświetlająca tego, co narysuje.
+     |      :param text: tekst, który będzie wyświetlany na planszy
+     |      :return: ax (wizuaizacja planszy, na której można jeszcze malować oraz ja wyświetlić)
+     |  
+     |  rysoj(self, text='')
+     |      Metoda pokazująca graczom narysowany obraz planszy
+     |      :param text: tekst, który będzie wyświetlany na planszy
+     |      :return: Void
+     |  
+     |  rysuj_numerki(self, lista, text='')
+     |      Metoda, która 'dorysowuje' do planszy odpowiednie numery pól, i ją pokazuje graczom.
+     |      :param lista: lista numerów pól, które mają być narysowane
+     |      :param text: tekst, który będzie wyświetlany na planszy
+     |      :return: Void
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\plansza.py
+
+Python Library Documentation: module Pole
+
+NAME
+    Pole
+
+CLASSES
+    builtins.object
+        Pole
+    
+    class Pole(builtins.object)
+     |  Pole(polozenie, czy_kopola=False, wysokosc=0)
+     |  
+     |  Klasa, która reprezentuje pojedyńcze pole na planszy.
+     |  Pole 'pamięta' jakie jest jego położenie, czy ma na sobie plansze lub kopole, oraz jeśli jest na nim pionek,
+     |  to jakiej jest plci, oraz którego jest gracza.
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, polozenie, czy_kopola=False, wysokosc=0)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  nadaj_numer(self)
+     |      Metoda nadająca unikalny numer każdemu Polu (w zależności od jego położenia)
+     |      :return: Void
+     |  
+     |  podaj_kto_jest(self)
+     |      Metoda zwracająca Gracza, którego Pionek jest na tym polu
+     |      :return: Gracz (który ma pionek na danym polu)
+     |  
+     |  podaj_numer(self)
+     |      Metoda, która zwraca numer danego pola
+     |      :return: Int (numer pola)
+     |  
+     |  podaj_polozenie(self)
+     |      Metoda zwracająca położenie danego pola
+     |      :return: Touple (położenie pola)
+     |  
+     |  podaj_wysokosc(self)
+     |      Metoda zwracająca wysokość budowki danego pola
+     |      :return: Int (wysokośc budowli na polu)
+     |  
+     |  poluz_pionek(self, gracz, plec)
+     |      Metoda symulująca położenei na danym polu pionka
+     |      :param gracz: Gracz, którego pionek jest kładziony na to pole
+     |      :param plec:  pleć pionka, który jest kładziony na to pole
+     |      :return: Void
+     |  
+     |  wyrzuc_pionek(self)
+     |      Metoda symulująca usunięcie pionka z danego pola
+     |      :return: Void
+     |  
+     |  zbodoj(self)
+     |      Metoda zwiększająca na danym Polu wysokośc budowli
+     |      :return: Void
+     |  
+     |  zbodoj_kopole(self)
+     |      Metoda budujaca na danym polu kopułę
+     |      :return: Void
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\pole.py
+
+Python Library Documentation: module Gracz
+
+NAME
+    Gracz
+
+CLASSES
+    builtins.object
+        Gracz
+    
+    class Gracz(builtins.object)
+     |  Gracz(nazwa, pole1, pole2, plansza, gra, pionek=<class 'Pionek.Pionek'>)
+     |  
+     |  Klasa, która reprezentuje pojedyńczego gracza.
+     |  Gracz 'wie' jakie są jego pionki, oraz jak się nazywa.
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, nazwa, pole1, pole2, plansza, gra, pionek=<class 'Pionek.Pionek'>)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  czy_oba_bez_ruchu(self)
+     |      Metoda sprawdzająca, czy oba pionki są bez ruchu
+     |      :return: Bolean
+     |  
+     |  podaj_drugi_pionek(self, pionek)
+     |      Metoda zwracająca pionek, drugi od podanego
+     |      :param pionek: pionke, którego nie chemy
+     |      :return: Pionek (ale innu od podanego jako argument)
+     |  
+     |  podaj_nazwe(self)
+     |      Zwraca nazwę gracza
+     |      :return: Str (nazwa gracza)
+     |  
+     |  podaj_pionek(self, plec)
+     |      Metoda zwracająca pionka o określonej płci
+     |      :param plec: płeć, której chcemy znaleźć pionek
+     |      :return: Pionek o podanej płci
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\gracz.py
+
+Python Library Documentation: module Pionek
+
+NAME
+    Pionek
+
+CLASSES
+    builtins.object
+        Pionek
+    
+    class Pionek(builtins.object)
+     |  Pionek(pole, plansza, gracz, gra, plec='M')
+     |  
+     |  Klasa imitująca pojedyńczego pionka w grze. Pionek 'wie', na jakim polu się znajduje, jakiej jest płci, na jakiej jest wysokości,
+     |  kto jest jego graczem, oraz w jakiej grze się znajduje
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, pole, plansza, gracz, gra, plec='M')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  budowanie_budynku(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowany budynek i budująca go
+     |      :return: Void
+     |  
+     |  budowanie_kopoly(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowana kopóła i budująca go
+     |      :return: Void
+     |  
+     |  czy_wygral(self)
+     |      Metoda zwrcająca czy dany pionke jest na pozycji wygranej
+     |      :return: Bolean
+     |  
+     |  gdzie_jest(self)
+     |      Metoda zwracająca pole na którym znajduje się pionek
+     |      :return: Pole
+     |  
+     |  gdzie_moze_budowac(self)
+     |      Metoda znajdująca pola, na których może budować dany pionek
+     |      :return: lista pól, na których może ten pionek budować
+     |  
+     |  gdzie_moze_budowac_kopole(self)
+     |      Metoda znajdująca pola, na których może budować kopółę dany pionek
+     |      :return: lista pól, na których może ten pionek budować kopółę
+     |  
+     |  gdzie_sie_moze_poruszyc(self)
+     |      Metoda znajdująca pola, na któe może poruszyć się dany pionek
+     |      :return: lista pól, na które może się ten pionke poruszyć
+     |  
+     |  mozliwosc_poruszania(self)
+     |      Metoda uaktualizowująca czy dany pionek ma możliość ruchu w którąkolwiek stronę
+     |      :return: Void
+     |  
+     |  podaj_drugiego_pionka(self)
+     |      Metoda zwracająca drugi pionek tego samego gracza
+     |      :return: Pionek
+     |  
+     |  podaj_gracza(self)
+     |      Metoda zwracająca gracza, który jest właścicielem tego pionka
+     |      :return: Gracz
+     |  
+     |  podaj_plec(self)
+     |      Metoda zwracająca płeć danego pionka
+     |      :return: Str (płeć pionka)
+     |  
+     |  podaj_pole_drugiego_pionka(self)
+     |      Metoda zwracająca pole drugiego pioneka tego samego gracza
+     |      :return: Pole (na którym jest drugi pionek)
+     |  
+     |  porusz_sie(self, nowe_pole)
+     |      Metoda poruszająca pionkiem na wskazane miejsce
+     |      :param nowe_pole: pole, na które ma wejść dany pionke
+     |      :return:Void
+     |  
+     |  poruszanie(self)
+     |      Metoda przygotowująca pionek do ruchu ("patrzy", gdzie ten pionek może się poruszyć i wybiera jedno z tych pól)
+     |      :return: Int (numer pola na który pionek ma się poruszyć)
+     |  
+     |  uaktualnij_poziom(self)
+     |      Metoda uaktualizowując poziom danego pionka
+     |      :return: Void
+     |  
+     |  wysokosc(self)
+     |      Metoda zwracająca wysokość na której znajduje się pionek
+     |      :return: Int (wysokość na jakiej jest poionek)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\pionek.py
+
+Python Library Documentation: module Apollo
+
+NAME
+    Apollo
+
+CLASSES
+    Pionek.Pionek(builtins.object)
+        Apollo
+    
+    class Apollo(Pionek.Pionek)
+     |  Apollo(pole, plansza, gracz, gra, plec='M')
+     |  
+     |  Podklasa klasy Pionek, która ma zmienione zasady poruszania:
+     |  pionek może może poruszyć się na pole, na którym znajduje się pionek innego gracza i zamienić się z nim miejscami
+     |  (jeśli ruch jest zgodny z pozostałymi zasadami)
+     |  
+     |  Method resolution order:
+     |      Apollo
+     |      Pionek.Pionek
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  gdzie_sie_moze_poruszyc(self)
+     |      Zmodyfikowanie metody o tej samej nazwie, ale uwzględniając zasadu ruchów Apolla
+     |      (zamienić się miejscem z innym pionkiem podczas swojego ruchu)
+     |      :return: Lista pól, na które może się poruszyć
+     |  
+     |  porusz_sie(self, nowe_pole)
+     |      Metoda porusazjąca Apollem zgodnie z jego zasadami
+     |      :param nowe_pole: pole, na które Apollo ma się przemieścić
+     |      :return: Void
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Pionek.Pionek:
+     |  
+     |  __init__(self, pole, plansza, gracz, gra, plec='M')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  budowanie_budynku(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowany budynek i budująca go
+     |      :return: Void
+     |  
+     |  budowanie_kopoly(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowana kopóła i budująca go
+     |      :return: Void
+     |  
+     |  czy_wygral(self)
+     |      Metoda zwrcająca czy dany pionke jest na pozycji wygranej
+     |      :return: Bolean
+     |  
+     |  gdzie_jest(self)
+     |      Metoda zwracająca pole na którym znajduje się pionek
+     |      :return: Pole
+     |  
+     |  gdzie_moze_budowac(self)
+     |      Metoda znajdująca pola, na których może budować dany pionek
+     |      :return: lista pól, na których może ten pionek budować
+     |  
+     |  gdzie_moze_budowac_kopole(self)
+     |      Metoda znajdująca pola, na których może budować kopółę dany pionek
+     |      :return: lista pól, na których może ten pionek budować kopółę
+     |  
+     |  mozliwosc_poruszania(self)
+     |      Metoda uaktualizowująca czy dany pionek ma możliość ruchu w którąkolwiek stronę
+     |      :return: Void
+     |  
+     |  podaj_drugiego_pionka(self)
+     |      Metoda zwracająca drugi pionek tego samego gracza
+     |      :return: Pionek
+     |  
+     |  podaj_gracza(self)
+     |      Metoda zwracająca gracza, który jest właścicielem tego pionka
+     |      :return: Gracz
+     |  
+     |  podaj_plec(self)
+     |      Metoda zwracająca płeć danego pionka
+     |      :return: Str (płeć pionka)
+     |  
+     |  podaj_pole_drugiego_pionka(self)
+     |      Metoda zwracająca pole drugiego pioneka tego samego gracza
+     |      :return: Pole (na którym jest drugi pionek)
+     |  
+     |  poruszanie(self)
+     |      Metoda przygotowująca pionek do ruchu ("patrzy", gdzie ten pionek może się poruszyć i wybiera jedno z tych pól)
+     |      :return: Int (numer pola na który pionek ma się poruszyć)
+     |  
+     |  uaktualnij_poziom(self)
+     |      Metoda uaktualizowując poziom danego pionka
+     |      :return: Void
+     |  
+     |  wysokosc(self)
+     |      Metoda zwracająca wysokość na której znajduje się pionek
+     |      :return: Int (wysokość na jakiej jest poionek)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Pionek.Pionek:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\apollo.py
+
+Python Library Documentation: module Hermes
+
+NAME
+    Hermes
+
+CLASSES
+    Pionek.Pionek(builtins.object)
+        Hermes
+    
+    class Hermes(Pionek.Pionek)
+     |  Hermes(pole, plansza, gracz, gra, plec='M')
+     |  
+     |  Podklasa klasy Pionek, która ma zmienione zasady poruszania:
+     |  pionek może poruszać się normalnie, lub poruszyć się o dowolną ilość pól, jeśli ciągle będize znajdowac się na tym samym poziomie
+     |  
+     |  Method resolution order:
+     |      Hermes
+     |      Pionek.Pionek
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  gdzie_sie_moze_poruszyc(self)
+     |      Zmodyfikowanie metody o tej samej nazwie, ale uwzględniając zasadu ruchów Hermesa
+     |      (może on poruszać ile chce na jednym poziomie)
+     |      :return: Lista pól, na które może się poruszyć
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Pionek.Pionek:
+     |  
+     |  __init__(self, pole, plansza, gracz, gra, plec='M')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  budowanie_budynku(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowany budynek i budująca go
+     |      :return: Void
+     |  
+     |  budowanie_kopoly(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowana kopóła i budująca go
+     |      :return: Void
+     |  
+     |  czy_wygral(self)
+     |      Metoda zwrcająca czy dany pionke jest na pozycji wygranej
+     |      :return: Bolean
+     |  
+     |  gdzie_jest(self)
+     |      Metoda zwracająca pole na którym znajduje się pionek
+     |      :return: Pole
+     |  
+     |  gdzie_moze_budowac(self)
+     |      Metoda znajdująca pola, na których może budować dany pionek
+     |      :return: lista pól, na których może ten pionek budować
+     |  
+     |  gdzie_moze_budowac_kopole(self)
+     |      Metoda znajdująca pola, na których może budować kopółę dany pionek
+     |      :return: lista pól, na których może ten pionek budować kopółę
+     |  
+     |  mozliwosc_poruszania(self)
+     |      Metoda uaktualizowująca czy dany pionek ma możliość ruchu w którąkolwiek stronę
+     |      :return: Void
+     |  
+     |  podaj_drugiego_pionka(self)
+     |      Metoda zwracająca drugi pionek tego samego gracza
+     |      :return: Pionek
+     |  
+     |  podaj_gracza(self)
+     |      Metoda zwracająca gracza, który jest właścicielem tego pionka
+     |      :return: Gracz
+     |  
+     |  podaj_plec(self)
+     |      Metoda zwracająca płeć danego pionka
+     |      :return: Str (płeć pionka)
+     |  
+     |  podaj_pole_drugiego_pionka(self)
+     |      Metoda zwracająca pole drugiego pioneka tego samego gracza
+     |      :return: Pole (na którym jest drugi pionek)
+     |  
+     |  porusz_sie(self, nowe_pole)
+     |      Metoda poruszająca pionkiem na wskazane miejsce
+     |      :param nowe_pole: pole, na które ma wejść dany pionke
+     |      :return:Void
+     |  
+     |  poruszanie(self)
+     |      Metoda przygotowująca pionek do ruchu ("patrzy", gdzie ten pionek może się poruszyć i wybiera jedno z tych pól)
+     |      :return: Int (numer pola na który pionek ma się poruszyć)
+     |  
+     |  uaktualnij_poziom(self)
+     |      Metoda uaktualizowując poziom danego pionka
+     |      :return: Void
+     |  
+     |  wysokosc(self)
+     |      Metoda zwracająca wysokość na której znajduje się pionek
+     |      :return: Int (wysokość na jakiej jest poionek)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Pionek.Pionek:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\hermes.py
+
+Python Library Documentation: module Minotaur
+
+NAME
+    Minotaur
+
+CLASSES
+    Pionek.Pionek(builtins.object)
+        Minotaur
+    
+    class Minotaur(Pionek.Pionek)
+     |  Minotaur(pole, plansza, gracz, gra, plec='M')
+     |  
+     |  Podklasa klasy Pionek, która ma zmienione zasady poruszania:
+     |  pionek może może poruszyć się na pole, na którym znajduje się pionek innego gracza, i 'wypchnąć' go na kolejne pole
+     |  (jeśli taki ruch jest możliwy)
+     |  
+     |  Method resolution order:
+     |      Minotaur
+     |      Pionek.Pionek
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  gdzie_sie_moze_poruszyc(self)
+     |      Zmodyfikowanie metody o tej samej nazwie, ale uwzględniając zasadu ruchów Minotaura
+     |      (może on "przesuwać pionka na innych polach")
+     |      :return: Lista pól, na które może się poruszyć
+     |  
+     |  podaj_polozenie_po_przesunieciu(self, pole)
+     |      Metoda, która podaje położenie, na którym by się znalazł popychany przez minotaura pionek
+     |      :param pole: pole, na którym obecnie znajduje się popychany pionek
+     |      :return: położenie pola(para liczb)
+     |  
+     |  porusz_sie(self, nowe_pole)
+     |      Metoda porusazjąca Minotaurem zgodnie z jego zasadami
+     |      :param nowe_pole: pole, na które minotaur ma się przemieścić
+     |      :return: Void
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Pionek.Pionek:
+     |  
+     |  __init__(self, pole, plansza, gracz, gra, plec='M')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  budowanie_budynku(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowany budynek i budująca go
+     |      :return: Void
+     |  
+     |  budowanie_kopoly(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowana kopóła i budująca go
+     |      :return: Void
+     |  
+     |  czy_wygral(self)
+     |      Metoda zwrcająca czy dany pionke jest na pozycji wygranej
+     |      :return: Bolean
+     |  
+     |  gdzie_jest(self)
+     |      Metoda zwracająca pole na którym znajduje się pionek
+     |      :return: Pole
+     |  
+     |  gdzie_moze_budowac(self)
+     |      Metoda znajdująca pola, na których może budować dany pionek
+     |      :return: lista pól, na których może ten pionek budować
+     |  
+     |  gdzie_moze_budowac_kopole(self)
+     |      Metoda znajdująca pola, na których może budować kopółę dany pionek
+     |      :return: lista pól, na których może ten pionek budować kopółę
+     |  
+     |  mozliwosc_poruszania(self)
+     |      Metoda uaktualizowująca czy dany pionek ma możliość ruchu w którąkolwiek stronę
+     |      :return: Void
+     |  
+     |  podaj_drugiego_pionka(self)
+     |      Metoda zwracająca drugi pionek tego samego gracza
+     |      :return: Pionek
+     |  
+     |  podaj_gracza(self)
+     |      Metoda zwracająca gracza, który jest właścicielem tego pionka
+     |      :return: Gracz
+     |  
+     |  podaj_plec(self)
+     |      Metoda zwracająca płeć danego pionka
+     |      :return: Str (płeć pionka)
+     |  
+     |  podaj_pole_drugiego_pionka(self)
+     |      Metoda zwracająca pole drugiego pioneka tego samego gracza
+     |      :return: Pole (na którym jest drugi pionek)
+     |  
+     |  poruszanie(self)
+     |      Metoda przygotowująca pionek do ruchu ("patrzy", gdzie ten pionek może się poruszyć i wybiera jedno z tych pól)
+     |      :return: Int (numer pola na który pionek ma się poruszyć)
+     |  
+     |  uaktualnij_poziom(self)
+     |      Metoda uaktualizowując poziom danego pionka
+     |      :return: Void
+     |  
+     |  wysokosc(self)
+     |      Metoda zwracająca wysokość na której znajduje się pionek
+     |      :return: Int (wysokość na jakiej jest poionek)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Pionek.Pionek:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\minotaur.py
+
+Python Library Documentation: module Artemida
+
+NAME
+    Artemida
+
+CLASSES
+    Pionek.Pionek(builtins.object)
+        Artemida
+    
+    class Artemida(Pionek.Pionek)
+     |  Artemida(pole, plansza, gracz, gra, plec='M')
+     |  
+     |  Podklasa klasy Pionek, która ma zmienione zasady poruszania:
+     |  pionek może może poruszyć się dwa razy podczas swojej tury.
+     |  
+     |  Method resolution order:
+     |      Artemida
+     |      Pionek.Pionek
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  gdzie_sie_moze_poruszyc(self)
+     |      Zmodyfikowanie metody o tej samej nazwie, ale uwzględniając zasadu ruchów Artemidy
+     |      (może on poruszać się dwa razy)
+     |      :return: Lista pól, na które może się poruszyć
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Pionek.Pionek:
+     |  
+     |  __init__(self, pole, plansza, gracz, gra, plec='M')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  budowanie_budynku(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowany budynek i budująca go
+     |      :return: Void
+     |  
+     |  budowanie_kopoly(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowana kopóła i budująca go
+     |      :return: Void
+     |  
+     |  czy_wygral(self)
+     |      Metoda zwrcająca czy dany pionke jest na pozycji wygranej
+     |      :return: Bolean
+     |  
+     |  gdzie_jest(self)
+     |      Metoda zwracająca pole na którym znajduje się pionek
+     |      :return: Pole
+     |  
+     |  gdzie_moze_budowac(self)
+     |      Metoda znajdująca pola, na których może budować dany pionek
+     |      :return: lista pól, na których może ten pionek budować
+     |  
+     |  gdzie_moze_budowac_kopole(self)
+     |      Metoda znajdująca pola, na których może budować kopółę dany pionek
+     |      :return: lista pól, na których może ten pionek budować kopółę
+     |  
+     |  mozliwosc_poruszania(self)
+     |      Metoda uaktualizowująca czy dany pionek ma możliość ruchu w którąkolwiek stronę
+     |      :return: Void
+     |  
+     |  podaj_drugiego_pionka(self)
+     |      Metoda zwracająca drugi pionek tego samego gracza
+     |      :return: Pionek
+     |  
+     |  podaj_gracza(self)
+     |      Metoda zwracająca gracza, który jest właścicielem tego pionka
+     |      :return: Gracz
+     |  
+     |  podaj_plec(self)
+     |      Metoda zwracająca płeć danego pionka
+     |      :return: Str (płeć pionka)
+     |  
+     |  podaj_pole_drugiego_pionka(self)
+     |      Metoda zwracająca pole drugiego pioneka tego samego gracza
+     |      :return: Pole (na którym jest drugi pionek)
+     |  
+     |  porusz_sie(self, nowe_pole)
+     |      Metoda poruszająca pionkiem na wskazane miejsce
+     |      :param nowe_pole: pole, na które ma wejść dany pionke
+     |      :return:Void
+     |  
+     |  poruszanie(self)
+     |      Metoda przygotowująca pionek do ruchu ("patrzy", gdzie ten pionek może się poruszyć i wybiera jedno z tych pól)
+     |      :return: Int (numer pola na który pionek ma się poruszyć)
+     |  
+     |  uaktualnij_poziom(self)
+     |      Metoda uaktualizowując poziom danego pionka
+     |      :return: Void
+     |  
+     |  wysokosc(self)
+     |      Metoda zwracająca wysokość na której znajduje się pionek
+     |      :return: Int (wysokość na jakiej jest poionek)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Pionek.Pionek:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\artemida.py
+
+Python Library Documentation: module Atlas
+
+NAME
+    Atlas
+
+CLASSES
+    Pionek.Pionek(builtins.object)
+        Atlas
+    
+    class Atlas(Pionek.Pionek)
+     |  Atlas(pole, plansza, gracz, gra, plec='M')
+     |  
+     |  Podklasa klasy Pionek, która ma zmienione zasady budowania kopół:
+     |  pionek może budować kopóły na każdej wysokości bloku.
+     |  
+     |  Method resolution order:
+     |      Atlas
+     |      Pionek.Pionek
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  gdzie_moze_budowac_kopole(self)
+     |      Zmodyfikowanie metody o tej samej nazwie, ale uwzględniając zasady budowania kopół Atlasa
+     |      (może on budować kopóły na kazdej wysokości)
+     |      :return: Lista pól, na których może budować kopółę
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Pionek.Pionek:
+     |  
+     |  __init__(self, pole, plansza, gracz, gra, plec='M')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  budowanie_budynku(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowany budynek i budująca go
+     |      :return: Void
+     |  
+     |  budowanie_kopoly(self)
+     |      Metoda, która wybiera, gdzie ma być zbudowana kopóła i budująca go
+     |      :return: Void
+     |  
+     |  czy_wygral(self)
+     |      Metoda zwrcająca czy dany pionke jest na pozycji wygranej
+     |      :return: Bolean
+     |  
+     |  gdzie_jest(self)
+     |      Metoda zwracająca pole na którym znajduje się pionek
+     |      :return: Pole
+     |  
+     |  gdzie_moze_budowac(self)
+     |      Metoda znajdująca pola, na których może budować dany pionek
+     |      :return: lista pól, na których może ten pionek budować
+     |  
+     |  gdzie_sie_moze_poruszyc(self)
+     |      Metoda znajdująca pola, na któe może poruszyć się dany pionek
+     |      :return: lista pól, na które może się ten pionke poruszyć
+     |  
+     |  mozliwosc_poruszania(self)
+     |      Metoda uaktualizowująca czy dany pionek ma możliość ruchu w którąkolwiek stronę
+     |      :return: Void
+     |  
+     |  podaj_drugiego_pionka(self)
+     |      Metoda zwracająca drugi pionek tego samego gracza
+     |      :return: Pionek
+     |  
+     |  podaj_gracza(self)
+     |      Metoda zwracająca gracza, który jest właścicielem tego pionka
+     |      :return: Gracz
+     |  
+     |  podaj_plec(self)
+     |      Metoda zwracająca płeć danego pionka
+     |      :return: Str (płeć pionka)
+     |  
+     |  podaj_pole_drugiego_pionka(self)
+     |      Metoda zwracająca pole drugiego pioneka tego samego gracza
+     |      :return: Pole (na którym jest drugi pionek)
+     |  
+     |  porusz_sie(self, nowe_pole)
+     |      Metoda poruszająca pionkiem na wskazane miejsce
+     |      :param nowe_pole: pole, na które ma wejść dany pionke
+     |      :return:Void
+     |  
+     |  poruszanie(self)
+     |      Metoda przygotowująca pionek do ruchu ("patrzy", gdzie ten pionek może się poruszyć i wybiera jedno z tych pól)
+     |      :return: Int (numer pola na który pionek ma się poruszyć)
+     |  
+     |  uaktualnij_poziom(self)
+     |      Metoda uaktualizowując poziom danego pionka
+     |      :return: Void
+     |  
+     |  wysokosc(self)
+     |      Metoda zwracająca wysokość na której znajduje się pionek
+     |      :return: Int (wysokość na jakiej jest poionek)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Pionek.Pionek:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    c:\users\jaako\desktop\python\python_projekt\atlas.py
+	
+
+
